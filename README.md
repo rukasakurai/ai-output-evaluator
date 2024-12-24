@@ -1,6 +1,6 @@
 # AI 評価ツール
 
-このリポジトリは、Azure OpenAI サービス等の出力を評価するツールです。
+このリポジトリは、Azure OpenAI サービス等の出力を検証するツールです。
 
 ## 主な機能
 
@@ -13,32 +13,17 @@
 - **GitHub Actions**: 自動的に出力生成と評価を実行します。
 
 ## 必要条件
-
-- .NET 6.0 以上
+- .NET 8.0 以上
 - Azure OpenAI Serviceと Azure PII Detection サービスへのアクセス権
 
 ## 使用方法
-
-### コマンド例
-
-#### Azure OpenAI サービスの実行
-
-```bash
-dotnet run -- openai "私の住所は東京都港区港南 2-16-3 品川グランドセントラルタワーです"
-```
-
-#### Azure PII Detection サービスの実行
-
-```bash
-dotnet run -- pii "私の住所は東京都港区港南 2-16-3 品川グランドセントラルタワーです"
-```
-
-### 出力
-
-- 実行結果は `output/` ディレクトリ内に保存されます。
+1) Clone the repo
+2) Save the test data in the /data/input folder
+3) Deploy the Azure resources defined in bicep
+4) Run code that calls either Azure OpenAI or Azure PII detection with the input data and saves the results in /data/output
+5) Evaluates the results, and saves the results in /data/evaluations
 
 ## GitHub Actions
-
 本リポジトリには、定期的に自動実行する GitHub Actions ワークフローが含まれています。
 
 ### 主要なステップ
